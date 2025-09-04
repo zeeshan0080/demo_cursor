@@ -21,7 +21,7 @@ export default function ProductCard({ product }: { product: Product }) {
 			viewport={{ once: true, amount: 0.3 }}
 			transition={{ duration: 0.6 }}
 			whileHover={{ y: -4 }}
-			className="group rounded-2xl border border-black/10 bg-white/60 backdrop-blur p-3 shadow-sm hover:shadow-md transition-shadow"
+			className="group rounded-2xl glass-surface p-3 shadow-sm hover:shadow-md transition-shadow"
 		>
 			<div className="relative aspect-[4/5] overflow-hidden rounded-xl bg-gray-100">
 				<Image
@@ -32,7 +32,7 @@ export default function ProductCard({ product }: { product: Product }) {
 					priority={false}
 				/>
 				{product.tag ? (
-					<span className="absolute left-3 top-3 rounded-full bg-black px-2 py-1 text-[10px] font-medium uppercase tracking-wide text-white">
+					<span className="absolute left-3 top-3 rounded-full bg-[--color-accent] px-2 py-1 text-[10px] font-medium uppercase tracking-wide text-white">
 						{product.tag}
 					</span>
 				) : null}

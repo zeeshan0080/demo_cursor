@@ -13,7 +13,7 @@ export default function Hero() {
 					transition={{ duration: 0.8, ease: "easeOut" }}
 					className="text-4xl sm:text-6xl font-semibold tracking-tight"
 				>
-					Effortless Style, Everyday Comfort
+					<span className="accent-gradient-text">Effortless Style</span>, Everyday Comfort
 				</motion.h1>
 				<motion.p
 					initial={{ opacity: 0, y: 10 }}

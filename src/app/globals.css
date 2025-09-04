@@ -4,6 +4,9 @@
   --background: #ffffff;
   --foreground: #171717;
   --accent: #ff5018;
+  --accent-600: #e64915;
+  --accent-700: #cc3f13;
+  --muted: #6b7280;
 }
 
 @theme inline {
@@ -45,3 +48,15 @@ body {
   transition: width 200ms ease;
 }
 .link-accent:hover::after { width: 100%; }
+
+/* Accent gradient and glass utilities */
+.accent-gradient-text {
+  background-image: linear-gradient(90deg, var(--accent), var(--accent-600));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.glass-surface {
+  @apply bg-white/70 backdrop-blur-xl border border-black/5;
+}
