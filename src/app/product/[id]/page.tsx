@@ -1,7 +1,9 @@
+"use client";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { products } from "@/data/products";
+import { useState } from "react";
 
 export function generateStaticParams() {
 	return products.map((p) => ({ id: p.id }));
@@ -15,6 +17,8 @@ export default function ProductDetail({ params }: { params: { id: string } }) {
 		"https://images.unsplash.com/photo-1520975922284-728f03b08a35?q=80&w=1200&auto=format&fit=crop",
 		"https://images.unsplash.com/photo-1514995669114-6081e934b693?q=80&w=1200&auto=format&fit=crop",
 	];
+
+	const [active, setActive] = useState(0);
 
 	// Dummy size availability
 	const sizes: { label: string; available: boolean }[] = [
@@ -33,13 +37,19 @@ export default function ProductDetail({ params }: { params: { id: string } }) {
 			<div className="grid grid-cols-1 md:grid-cols-2 gap-8">
 				<div className="space-y-3">
 					<div className="relative aspect-[4/5] overflow-hidden rounded-xl border border-black/10 bg-white/60">
-						<Image src={gallery[0]} alt={product.name} fill className="object-cover" />
+						<Image src={gallery[active]} alt={product.name} fill className="object-cover" />
 					</div>
 					<div className="grid grid-cols-3 gap-3">
-						{gallery.slice(1).map((src, i) => (
-							<div key={i} className="relative aspect-[4/5] overflow-hidden rounded-xl border border-black/10 bg-white/60">
-								<Image src={src} alt={`${product.name} ${i+2}`} fill className="object-cover" />
-							</div>
+						{gallery.map((src, i) => (
+							<button
+								key={i}
+								onClick={() => setActive(i)}
+								className={`relative aspect-[4/5] overflow-hidden rounded-xl border ${
+									i === active ? "border-[--color-accent]" : "border-black/10"
+								} bg-white/60`}
+							>
+								<Image src={src} alt={`${product.name} ${i+1}`} fill className="object-cover" />
+							</button>
 						))}
 					</div>
 				</div>

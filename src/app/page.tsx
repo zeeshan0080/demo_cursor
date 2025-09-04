@@ -1,4 +1,5 @@
 import Hero from "@/components/Hero";
+import HeroCarousel from "@/components/HeroCarousel";
 import Collections from "@/components/Collections";
 import Parallax from "@/components/Parallax";
 import { products } from "@/data/products";
@@ -6,7 +7,7 @@ import { products } from "@/data/products";
 export default function Home() {
   return (
     <div>
-      <Hero />
+      <HeroCarousel />
       <Collections products={products} />
       <Collections products={products} title="On Sale" />
       <Collections products={products} title="Summer Clearance" />
