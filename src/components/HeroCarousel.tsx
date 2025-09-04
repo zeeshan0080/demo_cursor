@@ -7,23 +7,26 @@ import Link from "next/link";
 const slides = [
 	{
 		image:
-			"https://images.unsplash.com/photo-1512436991641-6745cdb1723f?q=80&w=2000&auto=format&fit=crop",
+			"https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=2000&auto=format&fit=crop",
 		title: "Summer 2025",
 		subtitle: "Light layers in bold tones",
+		badge: "Women",
 		cta: { label: "Shop Women", href: "#collections" },
 	},
 	{
 		image:
-			"https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2000&auto=format&fit=crop",
+			"https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=2000&auto=format&fit=crop",
 		title: "Everyday Essentials",
 		subtitle: "Wardrobe building blocks",
+		badge: "Men",
 		cta: { label: "Shop Men", href: "#collections" },
 	},
 	{
 		image:
-			"https://images.unsplash.com/photo-1520975922284-728f03b08a35?q=80&w=2000&auto=format&fit=crop",
+			"https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=2000&auto=format&fit=crop",
 		title: "Athleisure Edit",
 		subtitle: "Move with ease",
+		badge: "Active",
 		cta: { label: "Shop Active", href: "#collections" },
 	},
 ];
@@ -55,18 +58,30 @@ export default function HeroCarousel() {
 						style={{ backgroundImage: `url(${slide.image})` }}
 					/>
 				</AnimatePresence>
-				<div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
-				<div className="absolute -left-20 top-10 h-80 w-80 rounded-full bg-[--color-accent]/30 blur-3xl" />
+				<div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/25 to-black/10" />
+				{/* Animated accent gradient line */}
+				<div className="pointer-events-none absolute left-0 right-0 top-24 flex justify-center">
+					<div className="h-px w-[70%] bg-gradient-to-r from-transparent via-[--color-accent] to-transparent opacity-70 animate-pulse" />
+				</div>
+				<div className="absolute -left-20 top-10 h-80 w-80 rounded-full bg-[--color-accent]/35 blur-3xl" />
 			</div>
 
 			<div className="mx-auto flex min-h-[calc(100svh-4rem)] max-w-6xl items-center px-4">
-				<div className="glass-surface rounded-3xl p-6 sm:p-10 max-w-xl">
+				<div className="max-w-2xl">
+					<div className="mb-4 inline-flex items-center gap-2">
+						<span className="inline-block h-1.5 w-10 rounded-full bg-[--color-accent]" />
+						{slide.badge ? (
+							<span className="rounded-full bg-black/30 backdrop-blur px-3 py-1 text-xs font-medium text-white ring-1 ring-white/20">
+								{slide.badge}
+							</span>
+						) : null}
+					</div>
 					<motion.h1
 						key={slide.title}
 						initial={{ y: 20, opacity: 0 }}
 						animate={{ y: 0, opacity: 1 }}
 						transition={{ duration: 0.6 }}
-						className="text-4xl sm:text-6xl font-semibold tracking-tight"
+						className="text-4xl sm:text-6xl font-semibold tracking-tight text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.45)]"
 					>
 						<span className="accent-gradient-text">{slide.title}</span>
 					</motion.h1>
@@ -75,13 +90,16 @@ export default function HeroCarousel() {
 						initial={{ y: 10, opacity: 0 }}
 						animate={{ y: 0, opacity: 1 }}
 						transition={{ delay: 0.1, duration: 0.6 }}
-						className="mt-4 text-black/80"
+						className="mt-4 text-white/90 drop-shadow-[0_1px_10px_rgba(0,0,0,0.35)]"
 					>
 						{slide.subtitle}
 					</motion.p>
 					<div className="mt-6 flex items-center gap-3">
 						<Link href={slide.cta.href} className="btn-primary">
 							{slide.cta.label}
+						</Link>
+						<Link href="#collections" className="rounded-full bg-white/15 text-white ring-1 ring-white/30 px-5 py-3 text-sm font-medium hover:bg-white/20 transition-colors">
+							Explore
 						</Link>
 					</div>
 					<div className="mt-6 flex gap-2">
@@ -91,7 +109,7 @@ export default function HeroCarousel() {
 								aria-label={`Go to slide ${i + 1}`}
 								onClick={() => setIndex(i)}
 								className={`h-2 w-6 rounded-full transition-all ${
-									i === index ? "bg-[--color-accent]" : "bg-black/20"
+									i === index ? "bg-[--color-accent]" : "bg-white/40"
 								}`}
 							/>
 						))}
