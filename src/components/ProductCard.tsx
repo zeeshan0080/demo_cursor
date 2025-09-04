@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 
 export type Product = {
@@ -13,7 +14,8 @@ export type Product = {
 
 export default function ProductCard({ product }: { product: Product }) {
 	return (
-		<motion.article
+		<Link href={`/product/${product.id}`}>
+			<motion.article
 			initial={{ opacity: 0, y: 20 }}
 			whileInView={{ opacity: 1, y: 0 }}
 			viewport={{ once: true, amount: 0.3 }}
@@ -39,7 +41,8 @@ export default function ProductCard({ product }: { product: Product }) {
 				<h3 className="text-sm font-medium">{product.name}</h3>
 				<p className="text-sm text-black/70">{product.price}</p>
 			</div>
-		</motion.article>
+			</motion.article>
+		</Link>
 	);
 }
 

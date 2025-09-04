@@ -5,8 +5,8 @@ import Link from "next/link";
 
 export default function Hero() {
 	return (
-		<section className="relative isolate overflow-hidden">
-			<div className="mx-auto max-w-6xl px-4 pt-32 pb-20 sm:pb-28">
+		<section className="relative isolate overflow-hidden min-h-[calc(100svh-4rem)] flex items-center">
+			<div className="mx-auto max-w-6xl px-4 py-12 sm:py-16">
 				<motion.h1
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
@@ -29,15 +29,12 @@ export default function Hero() {
 					transition={{ delay: 0.35, duration: 0.7 }}
 					className="mt-8 flex items-center gap-3"
 				>
-					<Link
-						href="#collections"
-						className="rounded-full bg-black px-5 py-3 text-white text-sm font-medium hover:bg-black/90 transition-colors"
-					>
+					<Link href="#collections" className="btn-primary">
 						Shop collections
 					</Link>
 					<Link
 						href="#about"
-						className="rounded-full border border-black/10 px-5 py-3 text-sm font-medium hover:bg-black/5 transition-colors"
+						className="rounded-full border border-black/10 px-5 py-3 text-sm font-medium hover:bg-black/5 transition-colors link-accent"
 					>
 						Learn more
 					</Link>
@@ -49,8 +46,8 @@ export default function Hero() {
 				transition={{ delay: 0.5, duration: 1.2 }}
 				className="pointer-events-none absolute inset-0 -z-10"
 			>
-				<div className="absolute -left-20 top-10 h-64 w-64 rounded-full bg-rose-200/60 blur-3xl" />
-				<div className="absolute right-0 bottom-10 h-64 w-64 rounded-full bg-indigo-200/60 blur-3xl" />
+				<div className="absolute -left-20 top-10 h-64 w-64 rounded-full bg-[--color-accent]/20 blur-3xl" />
+				<div className="absolute right-0 bottom-10 h-64 w-64 rounded-full bg-orange-200/50 blur-3xl" />
 			</motion.div>
 		</section>
 	);

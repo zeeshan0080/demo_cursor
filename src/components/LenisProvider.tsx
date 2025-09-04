@@ -8,7 +8,7 @@ export default function LenisProvider({ children }: PropsWithChildren) {
 		const lenis = new Lenis({
 			smoothWheel: true,
 			syncTouch: true,
-			duration: 1.1,
+			duration: 0.75,
 			easing: (x: number) => 1 - Math.pow(1 - x, 2),
 		});
 

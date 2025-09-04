@@ -3,11 +3,13 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --accent: #ff5018;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-accent: var(--accent);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -24,3 +26,22 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.btn-primary {
+  @apply rounded-full bg-[--color-accent] text-white px-5 py-3 text-sm font-medium transition-colors hover:opacity-90;
+}
+
+.link-accent {
+  @apply relative;
+}
+.link-accent::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  height: 2px;
+  width: 0;
+  background: var(--accent);
+  transition: width 200ms ease;
+}
+.link-accent:hover::after { width: 100%; }
